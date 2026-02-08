@@ -103,7 +103,7 @@ def main():
             print(f"Confidence: {result['score']:.2%}")
             print()
         except Exception as e:
-            print(f"Error: {e}")
+            print(f"Error answering question: {e}")
             print()
 
 if __name__ == "__main__":

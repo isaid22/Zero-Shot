@@ -15,8 +15,14 @@ from io import BytesIO
 
 def load_image_from_url(url):
     """Load an image from a URL."""
-    response = requests.get(url)
-    return Image.open(BytesIO(response.content))
+    try:
+        response = requests.get(url, timeout=10)
+        response.raise_for_status()
+        return Image.open(BytesIO(response.content))
+    except requests.RequestException as e:
+        raise Exception(f"Failed to download image from {url}: {e}")
+    except Exception as e:
+        raise Exception(f"Failed to open image from {url}: {e}")
 
 def main():
     print("=" * 60)

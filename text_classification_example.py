@@ -61,7 +61,7 @@ def main():
     if custom_text:
         custom_categories = input("Enter categories (comma-separated): ").strip()
         if custom_categories:
-            categories = [cat.strip() for cat in custom_categories.split(",")]
+            categories = [cat.strip() for cat in custom_categories.split(",") if cat.strip()]
         else:
             categories = candidate_labels
         
