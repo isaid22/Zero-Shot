@@ -1,19 +1,16 @@
 # Zero-Shot
 
+## High-level Architecture
+
+### Diagram (GitHub Mermaid)
+
+```mermaid
 flowchart TB
-    Client["Client<br/>(CLI / Web / Service)"]
-
-    subgraph API["API Layer"]
-        FastAPI["FastAPI<br/>(REST, Validation, OpenAPI)"]
-    end
-
-    subgraph Serving["Model Serving"]
-        RayServe["Ray Serve<br/>(Autoscaling, Load Balancing)"]
-        MPNet["MPNet<br/>(GPU / CUDA)"]
-    end
+    Client["Client<br/>(curl / browser / app)"]
+    FastAPI["FastAPI<br/>(Routes, Validation, OpenAPI)"]
+    RayServe["Ray Serve<br/>(Replicas, Scaling, GPUs)"]
+    MPNet["MPNet Model<br/>(GPU inference)"]
 
     Client -->|HTTP| FastAPI
-    FastAPI -->|Request| RayServe
-    RayServe -->|Dispatch| MPNet
-
-FastAPI defines the contract, Ray Serve handles execution and scaling, and MPNet runs the actual inference on GPU.
+    FastAPI -->|Python call| RayServe
+    RayServe -->|Actor method| MPNet
