@@ -1,0 +1,15 @@
+{
+  "texts": [
+    "Customer is asking to refinance their mortgage and lower their monthly payment.",
+    "GPU kernel is failing due to misaligned memory access."
+  ],
+  "labels": ["finance", "customer_support", "software_engineering", "gpu_debugging"],
+  "label_descriptions": [
+    "Banking, lending, mortgages, refinancing, credit risk",
+    "Support request, helpdesk, customer complaint, troubleshooting account issues",
+    "Programming, architecture, debugging, distributed systems",
+    "CUDA, GPU performance, kernel issues, memory alignment, profiling"
+  ],
+  "multi_label": false,
+  "top_k": 2
+}
